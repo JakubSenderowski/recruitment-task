@@ -35,8 +35,8 @@ Pod spodem (w tym pliku README) dodaj opis, w którym wyjaśnisz:
 ## Technologia i uruchomienie
 - interesuje nas **wyłącznie wersja desktopowa** (brak wymagań dot. mobile, nie dokładaj sobie niepotrzebnej pracy),
 - **nie narzucamy tech stacku** (technologia nie jest kryterium oceny):
-  - framework: dowolny lub brak,
-  - biblioteki: także dowolne. W naszej firmie skupiamy się głównie na Highcharts, ale nie wymagamy znajomości akurat tej biblioteki, więc jeśli chcesz użyć innej prostszej - gorąco do tego zachęcamy.
+- framework: dowolny lub brak,
+- biblioteki: także dowolne. W naszej firmie skupiamy się głównie na Highcharts, ale nie wymagamy znajomości akurat tej biblioteki, więc jeśli chcesz użyć innej prostszej - gorąco do tego zachęcamy.
 
 
 ### Uruchomienie projektu
