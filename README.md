@@ -51,7 +51,7 @@ Interesuje nas:
 Nie liczy się ilość/wielkość projektu, tylko jakość połączona z prostotą i umiejętność wytłumaczenia podejścia.
 
 Przewidujemy, że wykonanie zadania powinno zająć maksymalnie kilka godzin.
-Na rozwiazanie masz dokładnie 7 dni licząc od daty otrzymania tego zadania (otrzymania na maila zaproszenia do repozytorium).
+Na rozwiazanie masz dokładnie 7 dni licząc od daty otrzymania tego zadania.
 
 
 ## Jak zacząć i wysłać rozwiązanie
