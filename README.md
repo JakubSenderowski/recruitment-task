@@ -55,7 +55,7 @@ Na rozwiazanie masz dokładnie 7 dni licząc od daty otrzymania tego zadania.
 
 
 ## Jak zacząć i wysłać rozwiązanie
-- wykonaj fork tego repozytorium na swoje konto GitHub,
+- wykonaj fork tego repozytorium na swoje konto GitHub (w nazwie repozytorium powinna zawierać się nazwa Twojego profilu GH lub imię i nazwisko - tak aby była unikatowa dla wszystkich kandydatów),
 - upewnij się, że wszystkie zmiany są wypchnięte do Twojego repozytorium na GitHubie,
 - wyślij link do swojego repozytorium zawierającego rozwiązanie na adres e-mail: rekrutacja@blacklabel.net
 
