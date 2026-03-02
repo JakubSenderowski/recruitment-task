@@ -5,7 +5,10 @@ import { calculateAverageDeliveryByCountry } from '../utils/dataProcessing';
 import type { Order } from '../types/types';
 
 export function AverageDeliveryTime() {
-	const averageTime = calculateAverageDeliveryByCountry(data.orders as Order[]);
+	const deliveryData = calculateAverageDeliveryByCountry(data.orders as Order[]);
+	const sorted = Object.entries(deliveryData).sort((a, b) => a[1] - b[1]);
+	const countries = sorted.map(([country]) => country);
+	const values = sorted.map(([, value]) => value);
 	const options = {
 		chart: {
 			type: 'bar',
@@ -14,12 +17,32 @@ export function AverageDeliveryTime() {
 			text: 'Average delivery time (Country)',
 		},
 		xAxis: {
-			categories: Object.keys(averageTime),
+			title: {
+				text: null,
+			},
+
+			categories: countries,
+		},
+		yAxis: {
+			title: {
+				text: null,
+			},
+			labels: {
+				format: '{value} days',
+			},
+		},
+		plotOptions: {
+			bar: {
+				dataLabels: {
+					enabled: true,
+					format: '{y} days',
+				},
+			},
 		},
 		series: [
 			{
 				name: 'Delivery days',
-				data: Object.values(averageTime),
+				data: values,
 			},
 		],
 	};

@@ -6,13 +6,18 @@ import type { Order } from '../types/types';
 
 export function RevenueByCategoryPerCountry() {
 	const categoryRevenue = calculateCategoryRevenueByCountry(data.orders as Order[]);
-
-	const countries = Object.keys(categoryRevenue);
+	const sorted = Object.entries(categoryRevenue).sort(
+		(a, b) =>
+			Object.values(b[1]).reduce((sum, val) => sum + val, 0) -
+			Object.values(a[1]).reduce((sum, val) => sum + val, 0),
+	);
+	const countries = sorted.map(([country]) => country);
 	const categories = [...new Set(countries.flatMap((country) => Object.keys(categoryRevenue[country])))];
 	const series = categories.map((category) => ({
 		name: category,
 		data: countries.map((country) => categoryRevenue[country][category] || 0),
 	}));
+
 	const options = {
 		chart: {
 			type: 'column',
@@ -23,8 +28,16 @@ export function RevenueByCategoryPerCountry() {
 		xAxis: {
 			categories: countries,
 		},
+		yAxis: {
+			title: {
+				text: null,
+			},
+			labels: {
+				format: '{value} EUR',
+			},
+		},
 		tooltip: {
-			pointFormat: '{point.percentage:.1f}%',
+			valueSuffix: ' EUR',
 		},
 		plotOptions: {
 			column: {
