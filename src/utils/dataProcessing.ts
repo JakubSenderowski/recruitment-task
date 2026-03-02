@@ -1,13 +1,16 @@
 import type { Order } from '../types/types';
 
+function calculateRevenue(unitPrice: number, quantity: number) {
+	return unitPrice * quantity;
+}
 export function calculateRevenueByCustomerType(orders: Order[]) {
 	return orders.reduce(
 		(acc, order) => {
-			const totalRevenue = order.unitPrice * order.quantity;
+			const revenue = calculateRevenue(order.unitPrice, order.quantity);
 			if (order.customerType === 'returning') {
-				acc.returning += totalRevenue;
+				acc.returning += revenue;
 			} else {
-				acc.new += totalRevenue;
+				acc.new += revenue;
 			}
 			return acc;
 		},
@@ -30,7 +33,7 @@ export function calculateAverageDeliveryByCountry(orders: Order[]) {
 	const result: Record<string, number> = {};
 
 	Object.keys(grouped).forEach((country) => {
-		result[country] = grouped[country].totalDays / grouped[country].count;
+		result[country] = Math.round((grouped[country].totalDays / grouped[country].count) * 10) / 10;
 	});
 
 	return result;
@@ -39,13 +42,14 @@ export function calculateAverageDeliveryByCountry(orders: Order[]) {
 export function calculateCategoryRevenueByCountry(orders: Order[]) {
 	const grouped = orders.reduce(
 		(acc, order) => {
+			const revenue = calculateRevenue(order.unitPrice, order.quantity);
 			if (!acc[order.country]) {
 				acc[order.country] = {};
 			}
 			if (!acc[order.country][order.category]) {
 				acc[order.country][order.category] = 0;
 			}
-			acc[order.country][order.category] += order.quantity * order.unitPrice;
+			acc[order.country][order.category] += revenue;
 			return acc;
 		},
 		{} as Record<string, Record<string, number>>,
