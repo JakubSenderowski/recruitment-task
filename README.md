@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# Zadanie rekrutacyjne
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Opis rozwiązania:
 
-Currently, two official plugins are available:
+### Wykres 1 - Przychód na kraj (Stacked Bar Chart)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Pierwszy z wykresów prezentuje przychód, który generuje dany kraj wraz z dodatkowym wskazaniem na kategorię, którą najczęściej wybierają klienci w danym kraju. Daje nam to jasny wgląd w najbardziej popularną kategorię wraz z generowanym przychodem. Statystyka pozwoli na podjęcie działań zwiększających ilość produktów danej kategorii wraz z zwiększeniem przychodu.
 
-## React Compiler
+Stacked bar umożliwia nam realizację dwóch celów porównanie pomiędzy krajami wraz z udziałem kategorii w danym kraju, dzięki temu jasno widzimy, który kraj generuje najwyższy przychód oraz, która kategoria jest najbardziej dominująca w danym kraju
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Wykres 2 - Średni czas dostawy w danym kraju (Horizontal Bar Chart)
 
-## Expanding the ESLint configuration
+Wykres pokazuje średni czas dostawy uwzględniając dany kraj. Klienci, których czas dostawy paczki jest wydłużony mają tendencję do skorzystania z usług konkurencji, wykres pozwoli skupić się na logistyce, wraz z przyśpieszeniem dostaw co przełoży się na powrót klienta
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Horizontal bar chart - wydaje mi się być najbardziej optymalny do porównania wartości między kategoriami, dzięki temu od razu widzimy w którym kraju wysyłka jest najkrótsza a w którym najdłuższa
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Wykres 3 - Procent generowanego przychodu przez powracającego klienta vs nowego klienta (Pie Chart)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Statystyka pokazuje jaki procent przychodu generuje konkretny typ klienta. Dzięki temu możemy skupić się na konkretnym typie klienta przez zwiększenie gamy produktów lub uruchomienie promocji.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Pie Chart w celu przedstawienia procentowego udziału w całości przychodu z racji, że występują tylko dwa typy danych PieChart będzie najbardziej czytelną formą reprezentacji
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Technologia
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+React, TypeScript, Highcharts, Vite, CSS
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Uruchomienie
+
+Wymagana wersja Node.js (v22.21.1)
+
+1. `npm install`
+2. `npm run dev`
